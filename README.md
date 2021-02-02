@@ -35,4 +35,21 @@ public void ConfigureServices(IServiceCollection services)
     services.AddSwaggerGen();
 }
 ```
+> Example how to add your queries and commands.
+
+```csharp
+private void AddCommands(IServiceCollection services)
+{
+    services.AddCommand<CreatePersonCommand, CreatePersonCommandHandler>();
+    services.AddTransient<IValidator<CreatePersonCommand>, CreatePersonCommandValidator>();
+
+    services.AddCommand<EchoCommand, string, EchoCommandHandler>();
+    services.AddTransient<IValidator<EchoCommand>, EchoCommandValidator>();
+}
+
+private void AddQueries(IServiceCollection services)
+{
+    services.AddQuery<PersonQuery, IQueryable<Person>, PersonQueryHandler>();
+}
+```
 

@@ -1,4 +1,7 @@
+using Demo.Commands;
 using Demo.Queries;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,13 +33,25 @@ namespace Demo
         public void ConfigureServices(IServiceCollection services)
         {
             AddQueries(services);
+            AddCommands(services);
 
             services.AddPoweredSoftCQRS();
             services
                 .AddControllers()
-                .AddPoweredSoftQueryController();
+                .AddPoweredSoftQueryController()
+                .AddPoweredSoftCommandController()
+                .AddFluentValidation();
 
             services.AddSwaggerGen();
+        }
+
+        private void AddCommands(IServiceCollection services)
+        {
+            services.AddCommand<CreatePersonCommand, CreatePersonCommandHandler>();
+            services.AddTransient<IValidator<CreatePersonCommand>, CreatePersonCommandValidator>();
+
+            services.AddCommand<EchoCommand, string, EchoCommandHandler>();
+            services.AddTransient<IValidator<EchoCommand>, EchoCommandValidator>();
         }
 
         private void AddQueries(IServiceCollection services)

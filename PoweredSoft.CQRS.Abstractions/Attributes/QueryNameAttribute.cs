@@ -2,7 +2,7 @@
 
 namespace PoweredSoft.CQRS.Abstractions.Attributes
 {
-    [AttributeUsage(AttributeTargets.Class, Inherited = false)]
+    [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
     public class QueryNameAttribute : Attribute
     {
         public QueryNameAttribute(string name)

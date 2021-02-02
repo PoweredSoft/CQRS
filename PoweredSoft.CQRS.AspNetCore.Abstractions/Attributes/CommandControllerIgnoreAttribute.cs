@@ -2,7 +2,7 @@
 
 namespace PoweredSoft.CQRS.AspNetCore.Abstractions.Attributes
 {
-    [AttributeUsage(AttributeTargets.Class)]
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
     public class CommandControllerIgnoreAttribute : Attribute
     {
     }

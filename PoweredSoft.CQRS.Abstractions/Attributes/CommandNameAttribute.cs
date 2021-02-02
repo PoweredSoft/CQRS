@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PoweredSoft.CQRS.Abstractions.Attributes
 {
-    [AttributeUsage(AttributeTargets.Class, Inherited = false)]
+    [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
     public class CommandNameAttribute : Attribute
     {
         public CommandNameAttribute(string name)

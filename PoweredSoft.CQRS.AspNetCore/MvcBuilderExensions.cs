@@ -17,7 +17,6 @@ namespace PoweredSoft.CQRS.AspNetCore.Mvc
             return builder;
         }
 
-        /*
         public static IMvcBuilder AddPoweredSoftCommandController(this IMvcBuilder builder)
         {
             var services = builder.Services;
@@ -25,6 +24,6 @@ namespace PoweredSoft.CQRS.AspNetCore.Mvc
             builder.AddMvcOptions(o => o.Conventions.Add(new CommandControllerConvention(serviceProvider)));
             builder.ConfigureApplicationPartManager(m => m.FeatureProviders.Add(new CommandControllerFeatureProvider(serviceProvider)));
             return builder;
-        }*/
+        }
     }
 }

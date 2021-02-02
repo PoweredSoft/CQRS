@@ -12,10 +12,14 @@ namespace PoweredSoft.CQRS.AspNetCore.Mvc
         where TQuery : class
     {
         [HttpPost]
-        public Task<TQueryResult> Handle([FromServices] IQueryHandler<TQuery, TQueryResult> handler, 
+        public async Task<ActionResult<TQueryResult>> Handle([FromServices] IQueryHandler<TQuery, TQueryResult> handler, 
             [FromBody] TQuery query)
         {
-            return handler.HandleAsync(query, this.Request.HttpContext.RequestAborted);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+
+            return Ok(await handler.HandleAsync(query, this.Request.HttpContext.RequestAborted));
         }
     }
 }

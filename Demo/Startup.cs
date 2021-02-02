@@ -38,8 +38,8 @@ namespace Demo
             services.AddPoweredSoftCQRS();
             services
                 .AddControllers()
-                .AddPoweredSoftQueryController()
-                .AddPoweredSoftCommandController()
+                .AddPoweredSoftQueries()
+                .AddPoweredSoftCommands()
                 .AddFluentValidation();
 
             services.AddSwaggerGen();

@@ -6,7 +6,7 @@ namespace PoweredSoft.CQRS.AspNetCore.Mvc
 {
     public static class MvcBuilderExtensions
     {
-        public static IMvcBuilder AddPoweredSoftQueryController(this IMvcBuilder builder, Action<QueryControllerOptions> configuration = null)
+        public static IMvcBuilder AddPoweredSoftQueries(this IMvcBuilder builder, Action<QueryControllerOptions> configuration = null)
         {
             var options = new QueryControllerOptions();
             configuration?.Invoke(options);
@@ -17,7 +17,7 @@ namespace PoweredSoft.CQRS.AspNetCore.Mvc
             return builder;
         }
 
-        public static IMvcBuilder AddPoweredSoftCommandController(this IMvcBuilder builder)
+        public static IMvcBuilder AddPoweredSoftCommands(this IMvcBuilder builder)
         {
             var services = builder.Services;
             var serviceProvider = services.BuildServiceProvider();

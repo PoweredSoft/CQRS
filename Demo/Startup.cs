@@ -65,6 +65,12 @@ namespace Demo
             services.AddDynamicQuery<Contact>();
             services.AddDynamicQueryWithParams<Contact, SearchContactParams>(name: "SearchContacts")
                 .AddAlterQueryableWithParams<Contact, SearchContactParams, SearchContactParamsService>();
+
+            services
+                .AddTransient<IQueryableProvider<Person>, PersonQueryableProvider>()
+                .AddDynamicQuery<Person, PersonModel>("People")
+                .AddDynamicQueryInterceptor<Person, PersonModel, PersonConvertInterceptor>()
+                .AddDynamicQueryInterceptor<Person, PersonModel, PersonOptimizationInterceptor>();
         }
 
         private void AddCommands(IServiceCollection services)

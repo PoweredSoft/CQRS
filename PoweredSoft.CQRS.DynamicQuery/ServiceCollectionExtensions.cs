@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using PoweredSoft.CQRS.Abstractions;
 using PoweredSoft.CQRS.Abstractions.Discovery;
 using PoweredSoft.CQRS.DynamicQuery.Abstractions;
@@ -95,22 +96,64 @@ namespace PoweredSoft.CQRS.DynamicQuery
             return services.AddTransient<IAlterQueryableService<TSource, TDestination, TParams>, TService>();
         }
 
-        public static IServiceCollection AddQueryConvertInterceptor<TSource, TDestination, TService>(this IServiceCollection services)
-            where TService : class, IQueryConvertInterceptor<TSource, TDestination>
+        public static IServiceCollection AddDynamicQueryInterceptor<TSource, TDestination, TInterceptor>(this IServiceCollection services)
+            where TInterceptor : class, IQueryInterceptor
         {
-            return services.AddTransient<IQueryConvertInterceptor<TSource, TDestination>, TService>();
+            services.TryAddTransient<TInterceptor>();
+            return services.AddSingleton<IDynamicQueryInterceptorProvider<TSource, TDestination>>(
+                new DynamicQueryInterceptorProvider<TSource, TDestination>(typeof(TInterceptor)));
         }
 
-        public static IServiceCollection AddAfterReadInterceptorAsync<TSource, TService>(this IServiceCollection services)
-            where TService : class, IAfterReadInterceptorAsync<TSource>
+        public static IServiceCollection AddDynamicQueryInterceptors<TSource, TDestination, T1, T2>(this IServiceCollection services)
+            where T1 : class, IQueryInterceptor
+            where T2 : class, IQueryInterceptor
         {
-            return services.AddTransient<IAfterReadInterceptorAsync<TSource>, TService>();
+            services.TryAddTransient<T1>();
+            services.TryAddTransient<T2>();
+            return services.AddSingleton<IDynamicQueryInterceptorProvider<TSource, TDestination>>(
+                new DynamicQueryInterceptorProvider<TSource, TDestination>(typeof(T1), typeof(T2)));
         }
 
-        public static IServiceCollection AddAfterReadInterceptorAsync<TSource, TDestination, TService>(this IServiceCollection services)
-            where TService : class, IAfterReadInterceptorAsync<TSource, TDestination>
+        public static IServiceCollection AddDynamicQueryInterceptors<TSource, TDestination, T1, T2, T3>(this IServiceCollection services)
+            where T1 : class, IQueryInterceptor
+            where T2 : class, IQueryInterceptor
+            where T3 : class, IQueryInterceptor
         {
-            return services.AddTransient<IAfterReadInterceptorAsync<TSource, TDestination>, TService>();
+            services.TryAddTransient<T1>();
+            services.TryAddTransient<T2>();
+            services.TryAddTransient<T3>();
+            return services.AddSingleton<IDynamicQueryInterceptorProvider<TSource, TDestination>>(
+                new DynamicQueryInterceptorProvider<TSource, TDestination>(typeof(T1), typeof(T2), typeof(T3)));
+        }
+
+        public static IServiceCollection AddDynamicQueryInterceptors<TSource, TDestination, T1, T2, T3, T4>(this IServiceCollection services)
+            where T1 : class, IQueryInterceptor
+            where T2 : class, IQueryInterceptor
+            where T3 : class, IQueryInterceptor
+            where T4 : class, IQueryInterceptor
+        {
+            services.TryAddTransient<T1>();
+            services.TryAddTransient<T2>();
+            services.TryAddTransient<T3>();
+            services.TryAddTransient<T4>();
+            return services.AddSingleton<IDynamicQueryInterceptorProvider<TSource, TDestination>>(
+                new DynamicQueryInterceptorProvider<TSource, TDestination>(typeof(T1), typeof(T2), typeof(T3), typeof(T4)));
+        }
+
+        public static IServiceCollection AddDynamicQueryInterceptors<TSource, TDestination, T1, T2, T3, T4, T5>(this IServiceCollection services)
+            where T1 : class, IQueryInterceptor
+            where T2 : class, IQueryInterceptor
+            where T3 : class, IQueryInterceptor
+            where T4 : class, IQueryInterceptor
+            where T5 : class, IQueryInterceptor
+        {
+            services.TryAddTransient<T1>();
+            services.TryAddTransient<T2>();
+            services.TryAddTransient<T3>();
+            services.TryAddTransient<T4>();
+            services.TryAddTransient<T5>();
+            return services.AddSingleton<IDynamicQueryInterceptorProvider<TSource, TDestination>>(
+                new DynamicQueryInterceptorProvider<TSource, TDestination>(typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5)));
         }
     }
 }

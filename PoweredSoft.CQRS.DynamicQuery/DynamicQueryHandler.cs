@@ -16,7 +16,9 @@ namespace PoweredSoft.CQRS.DynamicQuery
     {
         public DynamicQueryHandler(IQueryHandlerAsync queryHandlerAsync, 
             IEnumerable<IQueryableProvider<TSource>> queryableProviders,
-            IEnumerable<IAlterQueryableService<TSource, TDestination>> alterQueryableServices, IServiceProvider serviceProvider) : base(queryHandlerAsync, queryableProviders, alterQueryableServices, serviceProvider)
+            IEnumerable<IAlterQueryableService<TSource, TDestination>> alterQueryableServices, 
+            IEnumerable<IDynamicQueryInterceptorProvider<TSource, TDestination>> dynamicQueryInterceptorProviders, 
+            IServiceProvider serviceProvider) : base(queryHandlerAsync, queryableProviders, alterQueryableServices, dynamicQueryInterceptorProviders, serviceProvider)
         {
         }
 
@@ -38,7 +40,9 @@ namespace PoweredSoft.CQRS.DynamicQuery
         public DynamicQueryHandler(IQueryHandlerAsync queryHandlerAsync, 
             IEnumerable<IQueryableProvider<TSource>> queryableProviders,
             IEnumerable<IAlterQueryableService<TSource, TDestination>> alterQueryableServices,
-            IEnumerable<IAlterQueryableService<TSource, TDestination, TParams>> alterQueryableServicesWithParams, IServiceProvider serviceProvider) : base(queryHandlerAsync, queryableProviders, alterQueryableServices, serviceProvider)
+            IEnumerable<IAlterQueryableService<TSource, TDestination, TParams>> alterQueryableServicesWithParams, 
+            IEnumerable<IDynamicQueryInterceptorProvider<TSource, TDestination>> dynamicQueryInterceptorProviders,
+            IServiceProvider serviceProvider) : base(queryHandlerAsync, queryableProviders, alterQueryableServices, dynamicQueryInterceptorProviders, serviceProvider)
         {
             this.alterQueryableServicesWithParams = alterQueryableServicesWithParams;
         }

@@ -68,9 +68,8 @@ namespace Demo
 
             services
                 .AddTransient<IQueryableProvider<Person>, PersonQueryableProvider>()
-                .AddDynamicQuery<Person, PersonModel>("People")
-                .AddDynamicQueryInterceptor<Person, PersonModel, PersonConvertInterceptor>()
-                .AddDynamicQueryInterceptor<Person, PersonModel, PersonOptimizationInterceptor>();
+                .AddDynamicQuery<Person, PersonModel>(name: "People")
+                .AddDynamicQueryInterceptors<Person, PersonModel, PersonConvertInterceptor, PersonOptimizationInterceptor>();
         }
 
         private void AddCommands(IServiceCollection services)

@@ -1,5 +1,6 @@
 ﻿using PoweredSoft.CQRS.DynamicQuery.Abstractions;
 using PoweredSoft.DynamicQuery.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -15,7 +16,7 @@ namespace PoweredSoft.CQRS.DynamicQuery
     {
         public DynamicQueryHandler(IQueryHandlerAsync queryHandlerAsync, 
             IEnumerable<IQueryableProvider<TSource>> queryableProviders,
-            IEnumerable<IAlterQueryableService<TSource, TDestination>> alterQueryableServices) : base(queryHandlerAsync, queryableProviders, alterQueryableServices)
+            IEnumerable<IAlterQueryableService<TSource, TDestination>> alterQueryableServices, IServiceProvider serviceProvider) : base(queryHandlerAsync, queryableProviders, alterQueryableServices, serviceProvider)
         {
         }
 
@@ -37,7 +38,7 @@ namespace PoweredSoft.CQRS.DynamicQuery
         public DynamicQueryHandler(IQueryHandlerAsync queryHandlerAsync, 
             IEnumerable<IQueryableProvider<TSource>> queryableProviders,
             IEnumerable<IAlterQueryableService<TSource, TDestination>> alterQueryableServices,
-            IEnumerable<IAlterQueryableService<TSource, TDestination, TParams>> alterQueryableServicesWithParams) : base(queryHandlerAsync, queryableProviders, alterQueryableServices)
+            IEnumerable<IAlterQueryableService<TSource, TDestination, TParams>> alterQueryableServicesWithParams, IServiceProvider serviceProvider) : base(queryHandlerAsync, queryableProviders, alterQueryableServices, serviceProvider)
         {
             this.alterQueryableServicesWithParams = alterQueryableServicesWithParams;
         }

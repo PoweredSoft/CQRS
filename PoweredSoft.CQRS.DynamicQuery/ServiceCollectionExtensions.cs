@@ -94,5 +94,23 @@ namespace PoweredSoft.CQRS.DynamicQuery
         {
             return services.AddTransient<IAlterQueryableService<TSource, TDestination, TParams>, TService>();
         }
+
+        public static IServiceCollection AddQueryConvertInterceptor<TSource, TDestination, TService>(this IServiceCollection services)
+            where TService : class, IQueryConvertInterceptor<TSource, TDestination>
+        {
+            return services.AddTransient<IQueryConvertInterceptor<TSource, TDestination>, TService>();
+        }
+
+        public static IServiceCollection AddAfterReadInterceptorAsync<TSource, TService>(this IServiceCollection services)
+            where TService : class, IAfterReadInterceptorAsync<TSource>
+        {
+            return services.AddTransient<IAfterReadInterceptorAsync<TSource>, TService>();
+        }
+
+        public static IServiceCollection AddAfterReadInterceptorAsync<TSource, TDestination, TService>(this IServiceCollection services)
+            where TService : class, IAfterReadInterceptorAsync<TSource, TDestination>
+        {
+            return services.AddTransient<IAfterReadInterceptorAsync<TSource, TDestination>, TService>();
+        }
     }
 }

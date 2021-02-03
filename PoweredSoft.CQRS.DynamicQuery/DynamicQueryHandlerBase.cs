@@ -15,12 +15,15 @@ namespace PoweredSoft.CQRS.DynamicQuery
     {
         private readonly IQueryHandlerAsync queryHandlerAsync;
         private readonly IEnumerable<IQueryableProvider<TSource>> queryableProviders;
+        private readonly IEnumerable<IAlterQueryableService<TSource, TDestination>> alterQueryableServices;
 
         public DynamicQueryHandlerBase(IQueryHandlerAsync queryHandlerAsync, 
-            IEnumerable<IQueryableProvider<TSource>> queryableProviders)
+            IEnumerable<IQueryableProvider<TSource>> queryableProviders,
+            IEnumerable<IAlterQueryableService<TSource, TDestination>> alterQueryableServices)
         {
             this.queryHandlerAsync = queryHandlerAsync;
             this.queryableProviders = queryableProviders;
+            this.alterQueryableServices = alterQueryableServices;
         }
 
         protected virtual Task<IQueryable<TSource>> GetQueryableAsync(IDynamicQuery query, CancellationToken cancellationToken = default)
@@ -56,9 +59,12 @@ namespace PoweredSoft.CQRS.DynamicQuery
             return result;
         }
 
-        protected virtual Task<IQueryable<TSource>> AlterSourceAsync(IQueryable<TSource> source, IDynamicQuery query, CancellationToken cancellationToken)
+        protected virtual async Task<IQueryable<TSource>> AlterSourceAsync(IQueryable<TSource> source, IDynamicQuery query, CancellationToken cancellationToken)
         {
-            return Task.FromResult(source);
+            foreach (var t in alterQueryableServices)
+                source = await t.AlterQueryableAsync(source, query, cancellationToken);
+
+            return source;
         }
 
         protected virtual IQueryCriteria CreateCriteriaFromQuery(IDynamicQuery query)

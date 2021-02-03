@@ -1,6 +1,7 @@
 ﻿using PoweredSoft.CQRS.DynamicQuery.Abstractions;
 using PoweredSoft.DynamicQuery.Core;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -12,7 +13,9 @@ namespace PoweredSoft.CQRS.DynamicQuery
         where TSource : class
         where TDestination : class
     {
-        public DynamicQueryHandler(IQueryHandlerAsync queryHandlerAsync, IEnumerable<IQueryableProvider<TSource>> queryableProviders) : base(queryHandlerAsync, queryableProviders)
+        public DynamicQueryHandler(IQueryHandlerAsync queryHandlerAsync, 
+            IEnumerable<IQueryableProvider<TSource>> queryableProviders,
+            IEnumerable<IAlterQueryableService<TSource, TDestination>> alterQueryableServices) : base(queryHandlerAsync, queryableProviders, alterQueryableServices)
         {
         }
 
@@ -29,8 +32,27 @@ namespace PoweredSoft.CQRS.DynamicQuery
         where TDestination : class
         where TParams : class
     {
-        public DynamicQueryHandler(IQueryHandlerAsync queryHandlerAsync, IEnumerable<IQueryableProvider<TSource>> queryableProviders) : base(queryHandlerAsync, queryableProviders)
+        private readonly IEnumerable<IAlterQueryableService<TSource, TDestination, TParams>> alterQueryableServicesWithParams;
+
+        public DynamicQueryHandler(IQueryHandlerAsync queryHandlerAsync, 
+            IEnumerable<IQueryableProvider<TSource>> queryableProviders,
+            IEnumerable<IAlterQueryableService<TSource, TDestination>> alterQueryableServices,
+            IEnumerable<IAlterQueryableService<TSource, TDestination, TParams>> alterQueryableServicesWithParams) : base(queryHandlerAsync, queryableProviders, alterQueryableServices)
         {
+            this.alterQueryableServicesWithParams = alterQueryableServicesWithParams;
+        }
+
+        protected override async Task<IQueryable<TSource>> AlterSourceAsync(IQueryable<TSource> source, IDynamicQuery query, CancellationToken cancellationToken)
+        {
+            source =  await base.AlterSourceAsync(source, query, cancellationToken);
+
+            if (query is IDynamicQueryParams<TParams> withParams)
+            {
+                foreach (var it in alterQueryableServicesWithParams)
+                    source = await it.AlterQueryableAsync(source, withParams, cancellationToken);
+            }
+
+            return source;
         }
 
         public Task<IQueryExecutionResult<TDestination>> HandleAsync(IDynamicQuery<TSource, TDestination, TParams> query, CancellationToken cancellationToken = default)

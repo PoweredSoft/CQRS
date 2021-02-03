@@ -11,5 +11,6 @@ namespace PoweredSoft.CQRS.Abstractions.Discovery
         Type QueryType { get; }
         Type ServiceType { get; }
         Type QueryResultType { get; }
+        string Category { get; }
     }
 }

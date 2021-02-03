@@ -2,21 +2,23 @@
 using Microsoft.Extensions.DependencyInjection;
 using PoweredSoft.CQRS.Abstractions.Discovery;
 using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace PoweredSoft.CQRS.AspNetCore.Mvc
+namespace PoweredSoft.CQRS.DynamicQuery.AspNetCore.Mvc
 {
-    public class QueryControllerConvention : IControllerModelConvention
+    public class DynamicQueryControllerConvention : IControllerModelConvention
     {
         private readonly IServiceProvider serviceProvider;
 
-        public QueryControllerConvention(IServiceProvider serviceProvider)
+        public DynamicQueryControllerConvention(IServiceProvider serviceProvider)
         {
             this.serviceProvider = serviceProvider;
         }
 
         public void Apply(ControllerModel controller)
         {
-            if (controller.ControllerType.IsGenericType && controller.ControllerType.Name.Contains("QueryController") && controller.ControllerType.Assembly == typeof(QueryControllerConvention).Assembly)
+            if (controller.ControllerType.IsGenericType && controller.ControllerType.Name.Contains("DynamicQueryController") && controller.ControllerType.Assembly == typeof(DynamicQueryControllerConvention).Assembly)
             {
                 var genericType = controller.ControllerType.GenericTypeArguments[0];
                 var queryDiscovery = this.serviceProvider.GetRequiredService<IQueryDiscovery>();

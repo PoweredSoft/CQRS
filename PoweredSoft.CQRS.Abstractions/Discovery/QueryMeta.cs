@@ -27,5 +27,6 @@ namespace PoweredSoft.CQRS.Abstractions.Discovery
         public virtual Type QueryType { get; }
         public virtual Type ServiceType { get; }
         public virtual Type QueryResultType { get; }
+        public virtual string Category => "BasicQuery";
     }
 }

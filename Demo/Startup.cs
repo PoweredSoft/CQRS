@@ -1,4 +1,6 @@
+using Demo.AsyncProvider;
 using Demo.Commands;
+using Demo.DynamicQueries;
 using Demo.Queries;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -13,6 +15,12 @@ using Microsoft.Extensions.Logging;
 using PoweredSoft.CQRS;
 using PoweredSoft.CQRS.Abstractions;
 using PoweredSoft.CQRS.AspNetCore.Mvc;
+using PoweredSoft.CQRS.DynamicQuery;
+using PoweredSoft.CQRS.DynamicQuery.Abstractions;
+using PoweredSoft.CQRS.DynamicQuery.AspNetCore;
+using PoweredSoft.Data;
+using PoweredSoft.Data.Core;
+using PoweredSoft.DynamicQuery;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,16 +41,28 @@ namespace Demo
         public void ConfigureServices(IServiceCollection services)
         {
             AddQueries(services);
+            AddDynamicQueries(services);
             AddCommands(services);
+
+            services.AddTransient<IAsyncQueryableHandlerService, InMemoryQueryableHandler>();
+            services.AddPoweredSoftDataServices();
+            services.AddPoweredSoftDynamicQuery();
 
             services.AddPoweredSoftCQRS();
             services
                 .AddControllers()
                 .AddPoweredSoftQueries()
                 .AddPoweredSoftCommands()
+                .AddPoweredSoftDynamicQueries()
                 .AddFluentValidation();
 
             services.AddSwaggerGen();
+        }
+
+        private void AddDynamicQueries(IServiceCollection services)
+        {
+            services.AddTransient<IQueryableProvider<Contact>, ContactQueryableProvider>();
+            services.AddDynamicQuery<Contact, Contact>();
         }
 
         private void AddCommands(IServiceCollection services)

@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Pluralize.NET" Version="1.0.2" />
+    <PackageReference Include="PoweredSoft.DynamicQuery" Version="2.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PoweredSoft.CQRS.DynamicQuery.Abstractions\PoweredSoft.CQRS.DynamicQuery.Abstractions.csproj" />
+    <ProjectReference Include="..\PoweredSoft.CQRS\PoweredSoft.CQRS.csproj" />
+  </ItemGroup>
+
+</Project>

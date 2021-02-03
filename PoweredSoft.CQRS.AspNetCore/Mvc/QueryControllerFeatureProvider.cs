@@ -28,6 +28,9 @@ namespace PoweredSoft.CQRS.AspNetCore.Mvc
                 if (ignoreAttribute != null)
                     continue;
 
+                if (f.Category != "BasicQuery")
+                    continue;
+
                 var controllerType = typeof(QueryController<,>).MakeGenericType(f.QueryType, f.QueryResultType);
                 var controllerTypeInfo = controllerType.GetTypeInfo();
                 feature.Controllers.Add(controllerTypeInfo);

@@ -12,6 +12,10 @@ namespace PoweredSoft.CQRS.DynamicQuery
 {
     public static class ServiceCollectionExtensions
     {
+        public static IServiceCollection AddDynamicQuery<TSourceAndDestination>(this IServiceCollection services, string name = null)
+            where TSourceAndDestination : class
+            => AddDynamicQuery<TSourceAndDestination, TSourceAndDestination>(services, name: name);
+
         public static IServiceCollection AddDynamicQuery<TSource, TDestination>(this IServiceCollection services, string name = null)
             where TSource : class
             where TDestination : class
@@ -33,7 +37,12 @@ namespace PoweredSoft.CQRS.DynamicQuery
             return services;
         }
 
-        public static IServiceCollection AddDynamicQueryWithParams<TSource, TDestination, TParams>(this IServiceCollection services, string name = null)
+        public static IServiceCollection AddDynamicQueryWithParams<TSourceAndDestination, TParams>(this IServiceCollection services, string name = null)
+            where TSourceAndDestination : class
+            where TParams : class
+            => AddDynamicQueryWithParams<TSourceAndDestination, TSourceAndDestination, TParams>(services, name: name);
+
+            public static IServiceCollection AddDynamicQueryWithParams<TSource, TDestination, TParams>(this IServiceCollection services, string name = null)
             where TSource : class
             where TDestination : class
             where TParams : class
@@ -56,6 +65,34 @@ namespace PoweredSoft.CQRS.DynamicQuery
             services.AddSingleton<IQueryMeta>(queryMeta);
 
             return services;
+        }
+
+        public static IServiceCollection AddAlterQueryable<TSourceAndDestination, TService>(this IServiceCollection services)
+            where TService : class, IAlterQueryableService<TSourceAndDestination, TSourceAndDestination>
+        {
+            return services.AddTransient<IAlterQueryableService<TSourceAndDestination, TSourceAndDestination>, TService>();
+        }
+
+        public static IServiceCollection AddAlterQueryable<TSource, TDestination, TService>(this IServiceCollection services)
+            where TService : class, IAlterQueryableService<TSource, TDestination>
+        {
+            return services.AddTransient<IAlterQueryableService<TSource, TDestination>, TService>();
+        }
+
+        public static IServiceCollection AddAlterQueryableWithParams<TSourceAndTDestination, TParams, TService>
+            (this IServiceCollection services)
+            where TParams : class
+            where TService : class, IAlterQueryableService<TSourceAndTDestination, TSourceAndTDestination, TParams>
+        {
+            return services.AddTransient<IAlterQueryableService< TSourceAndTDestination, TSourceAndTDestination, TParams>, TService>();
+        }
+
+        public static IServiceCollection AddAlterQueryableWithParams<TSource, TDestination, TParams, TService>
+            (this IServiceCollection services)
+            where TParams : class
+            where TService : class, IAlterQueryableService<TSource, TDestination, TParams>
+        {
+            return services.AddTransient<IAlterQueryableService<TSource, TDestination, TParams>, TService>();
         }
     }
 }

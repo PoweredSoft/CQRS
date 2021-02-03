@@ -15,7 +15,7 @@ namespace PoweredSoft.CQRS.DynamicQuery.AspNetCore
 
     }
 
-    public class DynamicQuery<TSource, TDestination, TParams> : DynamicQuery, IDynamicQuery<TSource, TDestination>, IDynamicQueryParams<TParams>
+    public class DynamicQuery<TSource, TDestination, TParams> : DynamicQuery, IDynamicQuery<TSource, TDestination, TParams>
         where TSource : class
         where TDestination : class
         where TParams : class

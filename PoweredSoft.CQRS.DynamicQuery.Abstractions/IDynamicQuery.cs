@@ -12,6 +12,14 @@ namespace PoweredSoft.CQRS.DynamicQuery.Abstractions
 
     }
 
+    public interface IDynamicQuery<TSource, TDestination, TParams> : IDynamicQuery<TSource, TDestination>, IDynamicQueryParams<TParams>
+        where TSource : class
+        where TDestination : class
+        where TParams : class
+    {
+        
+    }
+
     public interface IDynamicQuery
         
     {

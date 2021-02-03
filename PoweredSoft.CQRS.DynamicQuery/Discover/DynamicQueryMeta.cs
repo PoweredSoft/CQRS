@@ -20,8 +20,8 @@ namespace PoweredSoft.CQRS.DynamicQuery.Discover
         {
             get
             {
-                if (NameAttribute != null)
-                    return NameAttribute.Name;
+                if (OverridableName != null)
+                    return OverridableName;
 
                 var pluralizer = new Pluralize.NET.Pluralizer();
                 return pluralizer.Pluralize(DestinationType.Name);
@@ -29,5 +29,6 @@ namespace PoweredSoft.CQRS.DynamicQuery.Discover
         }
 
         public Type ParamsType { get; internal set; }
+        public string OverridableName { get; internal set; }
     }
 }

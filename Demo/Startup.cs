@@ -63,6 +63,7 @@ namespace Demo
         {
             services.AddTransient<IQueryableProvider<Contact>, ContactQueryableProvider>();
             services.AddDynamicQuery<Contact, Contact>();
+            services.AddDynamicQueryWithParams<Contact, Contact, SearchContactParams>(name: "SearchContacts");
         }
 
         private void AddCommands(IServiceCollection services)

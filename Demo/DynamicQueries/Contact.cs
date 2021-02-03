@@ -1,9 +1,4 @@
-﻿using PoweredSoft.CQRS.DynamicQuery.Abstractions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace Demo.DynamicQueries
 {
@@ -13,17 +8,8 @@ namespace Demo.DynamicQueries
         public string DisplayName { get; set; }
     }
 
-    public class ContactQueryableProvider : IQueryableProvider<Contact>
+    public class SearchContactParams
     {
-        public Task<IQueryable<Contact>> GetQueryableAsync(object query, CancellationToken cancelllationToken = default)
-        {
-            var ret = new List<Contact>
-            {
-                new Contact { Id = 1, DisplayName = "David L"},
-                new Contact { Id = 2, DisplayName = "John Doe"} 
-            };
-
-            return Task.FromResult(ret.AsQueryable());
-        }
+        public string SearchDisplayName { get; set; }
     }
 }

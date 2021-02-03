@@ -33,7 +33,7 @@ namespace PoweredSoft.CQRS.DynamicQuery.AspNetCore.Mvc
         [HttpPost]
         public async Task<IQueryExecutionResult<TDestination>> HandleAsync(
                 [FromBody] DynamicQuery<TSource, TDestination, TParams> query,
-                [FromServices] PoweredSoft.CQRS.Abstractions.IQueryHandler<IDynamicQuery<TSource, TDestination>, IQueryExecutionResult<TDestination>> queryHandler
+                [FromServices] PoweredSoft.CQRS.Abstractions.IQueryHandler<IDynamicQuery<TSource, TDestination, TParams>, IQueryExecutionResult<TDestination>> queryHandler
             )
         {
             var result = await queryHandler.HandleAsync(query, HttpContext.RequestAborted);

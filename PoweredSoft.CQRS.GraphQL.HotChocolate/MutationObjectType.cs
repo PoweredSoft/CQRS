@@ -21,7 +21,7 @@ namespace PoweredSoft.CQRS.GraphQL.HotChocolate
             desc.Name("Mutation");
             foreach (var m in commandDiscovery.GetCommands())
             {
-                var queryField = desc.Field(m.LowerCamelCaseName);
+                var mutationField = desc.Field(m.LowerCamelCaseName);
 
                 Type typeToGet;
                 if (m.CommandResultType == null)
@@ -30,15 +30,15 @@ namespace PoweredSoft.CQRS.GraphQL.HotChocolate
                     typeToGet = typeof(ICommandHandler<,>).MakeGenericType(m.CommandType, m.CommandResultType);
 
                 if (m.CommandResultType == null)
-                    queryField.Type(typeof(int?));
+                    mutationField.Type(typeof(int?));
                 else
-                    queryField.Type(m.CommandResultType);
+                    mutationField.Type(m.CommandResultType);
 
                 //queryField.Use((sp, d) => new MutationAuthorizationMiddleware(m.CommandType, d));
 
                 if (m.CommandType.GetProperties().Length == 0)
                 {
-                    queryField.Resolve(async ctx =>
+                    mutationField.Resolve(async ctx =>
                     {
                         var queryArgument = Activator.CreateInstance(m.CommandType);
                         return await HandleMutation(m.CommandResultType != null, ctx, typeToGet, queryArgument);
@@ -47,21 +47,16 @@ namespace PoweredSoft.CQRS.GraphQL.HotChocolate
                     continue;
                 }
 
-                queryField.Argument("params", t => t.Type(m.CommandType));
+                mutationField.Argument("params", t => t.Type(m.CommandType));
 
-                queryField.Resolve(async ctx =>
+                mutationField.Resolve(async ctx =>
                 {
                     var queryArgument = ctx.ArgumentValue<object>("params");
                     return await HandleMutation(m.CommandResultType != null, ctx, typeToGet, queryArgument);
                 });
 
-                // TODO.
-                //if (m.MutationObjectRequired)
-                //    queryField.Use<MutationParamRequiredMiddleware>();
-
-                // TODO.
-                //if (m.ValidateMutationObject)
-                //   queryField.Use<MutationValidationMiddleware>();
+                mutationField.Use<MutationParamRequiredMiddleware>();
+                mutationField.Use<MutationValidationMiddleware>();
             }
         }
 

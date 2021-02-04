@@ -19,6 +19,7 @@ using PoweredSoft.CQRS.AspNetCore.Mvc;
 using PoweredSoft.CQRS.DynamicQuery;
 using PoweredSoft.CQRS.DynamicQuery.Abstractions;
 using PoweredSoft.CQRS.DynamicQuery.AspNetCore;
+using PoweredSoft.CQRS.GraphQL.FluentValidation;
 using PoweredSoft.CQRS.GraphQL.HotChocolate;
 using PoweredSoft.Data;
 using PoweredSoft.Data.Core;
@@ -50,7 +51,9 @@ namespace Demo
             services.AddPoweredSoftDataServices();
             services.AddPoweredSoftDynamicQuery();
 
-            services.AddPoweredSoftCQRS();
+            services
+                .AddPoweredSoftCQRS();
+
             services
                 .AddControllers()
                 .AddPoweredSoftQueries()
@@ -65,8 +68,9 @@ namespace Demo
                 .AddMutationType(d => d.Name("Mutation"))
                 .AddPoweredSoftMutations();
 
+            services.AddPoweredSoftGraphQLFluentValidation();
 
-            //services.AddSwaggerGen();
+            services.AddSwaggerGen();
         }
 
         private void AddDynamicQueries(IServiceCollection services)

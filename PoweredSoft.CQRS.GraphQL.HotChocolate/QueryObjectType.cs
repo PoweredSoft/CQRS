@@ -57,10 +57,7 @@ namespace PoweredSoft.CQRS.GraphQL.HotChocolate
                 if (q.QueryObjectRequired)
                     queryField.Use<QueryParamRequiredMiddleware>();*/
 
-                /* TODO
-                if (q.ValidateQueryObject)
-                    queryField.Use<QueryValidationMiddleware>();
-                */
+                queryField.Use<QueryValidationMiddleware>();
             }
         }
 

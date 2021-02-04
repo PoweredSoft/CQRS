@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PoweredSoft.CQRS.Abstractions\PoweredSoft.CQRS.Abstractions.csproj" />
+    <ProjectReference Include="..\PoweredSoft.CQRS.GraphQL.Abstractions\PoweredSoft.CQRS.GraphQL.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>

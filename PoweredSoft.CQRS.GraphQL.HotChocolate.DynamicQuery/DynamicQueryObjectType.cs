@@ -61,6 +61,9 @@ namespace PoweredSoft.CQRS.GraphQL.HotChocolate.DynamicQuery
 
                     f.Type(resultType);
 
+                    // middleware to validate.
+                    f.Use<QueryValidationMiddleware>();
+
                     // resolver
                     f.Resolve(async r =>
                     {

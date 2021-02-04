@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\PoweredSoft.CQRS.Abstractions\PoweredSoft.CQRS.Abstractions.csproj" />
     <ProjectReference Include="..\PoweredSoft.CQRS.GraphQL.DynamicQuery\PoweredSoft.CQRS.GraphQL.DynamicQuery.csproj" />
+    <ProjectReference Include="..\PoweredSoft.CQRS.GraphQL.HotChocolate\PoweredSoft.CQRS.GraphQL.HotChocolate.csproj" />
   </ItemGroup>
 
 </Project>

@@ -28,5 +28,19 @@ namespace PoweredSoft.CQRS.Abstractions.Discovery
         public virtual Type ServiceType { get; }
         public virtual Type QueryResultType { get; }
         public virtual string Category => "BasicQuery";
+
+        public string LowerCamelCaseName
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(Name))
+                    return Name;
+
+                var name = Name;
+                var firstLetter = Char.ToLowerInvariant(name[0]);
+                var ret = $"{firstLetter}{name.Substring(1)}";
+                return ret;
+            }
+        }
     }
 }

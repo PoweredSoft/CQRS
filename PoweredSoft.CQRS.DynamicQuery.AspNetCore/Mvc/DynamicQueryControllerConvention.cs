@@ -23,7 +23,7 @@ namespace PoweredSoft.CQRS.DynamicQuery.AspNetCore.Mvc
                 var genericType = controller.ControllerType.GenericTypeArguments[0];
                 var queryDiscovery = this.serviceProvider.GetRequiredService<IQueryDiscovery>();
                 var query = queryDiscovery.FindQuery(genericType);
-                controller.ControllerName = query.Name;
+                controller.ControllerName = query.LowerCamelCaseName;
             }
         }
     }

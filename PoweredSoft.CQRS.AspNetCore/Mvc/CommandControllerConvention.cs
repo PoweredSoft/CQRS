@@ -21,7 +21,7 @@ namespace PoweredSoft.CQRS.AspNetCore.Mvc
                 var genericType = controller.ControllerType.GenericTypeArguments[0];
                 var commandDiscovery = this.serviceProvider.GetRequiredService<ICommandDiscovery>();
                 var command = commandDiscovery.FindCommand(genericType);
-                controller.ControllerName = command.Name;
+                controller.ControllerName = command.LowerCamelCaseName;
             }
         }
     }

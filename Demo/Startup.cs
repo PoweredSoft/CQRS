@@ -4,6 +4,7 @@ using Demo.DynamicQueries;
 using Demo.Queries;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using HotChocolate.Types;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -18,6 +19,7 @@ using PoweredSoft.CQRS.AspNetCore.Mvc;
 using PoweredSoft.CQRS.DynamicQuery;
 using PoweredSoft.CQRS.DynamicQuery.Abstractions;
 using PoweredSoft.CQRS.DynamicQuery.AspNetCore;
+using PoweredSoft.CQRS.GraphQL.HotChocolate;
 using PoweredSoft.Data;
 using PoweredSoft.Data.Core;
 using PoweredSoft.DynamicQuery;
@@ -27,7 +29,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace Demo
-{
+{ 
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -56,7 +58,15 @@ namespace Demo
                 .AddPoweredSoftDynamicQueries()
                 .AddFluentValidation();
 
-            services.AddSwaggerGen();
+            services
+                .AddGraphQLServer()
+                .AddQueryType(d => d.Name("Query"))
+                .AddPoweredSoftQueries()
+                .AddMutationType(d => d.Name("Mutation"))
+                .AddPoweredSoftMutations();
+
+
+            //services.AddSwaggerGen();
         }
 
         private void AddDynamicQueries(IServiceCollection services)
@@ -100,18 +110,19 @@ namespace Demo
 
             app.UseAuthorization();
 
-            app.UseSwagger();
+            //app.UseSwagger();
 
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
             // specifying the Swagger JSON endpoint.
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-            });
+            //app.UseSwaggerUI(c =>
+            //{
+             //   c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            //});
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapGraphQL();
             });
         }
     }

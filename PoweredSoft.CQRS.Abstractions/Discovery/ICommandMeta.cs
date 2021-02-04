@@ -8,5 +8,6 @@ namespace PoweredSoft.CQRS.Abstractions.Discovery
         Type CommandType { get; }
         Type ServiceType { get; }
         Type CommandResultType { get; }
+        string LowerCamelCaseName { get; }
     }
 }

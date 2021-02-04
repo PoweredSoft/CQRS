@@ -12,5 +12,6 @@ namespace PoweredSoft.CQRS.Abstractions.Discovery
         Type ServiceType { get; }
         Type QueryResultType { get; }
         string Category { get; }
+        string LowerCamelCaseName { get; }
     }
 }

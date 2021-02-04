@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="FluentValidation.AspNetCore" Version="9.5.0" />
+    <PackageReference Include="HotChocolate.AspNetCore" Version="11.0.9" />
     <PackageReference Include="PoweredSoft.Data" Version="2.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.6.3" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.6.3" />
@@ -17,6 +18,7 @@
     <ProjectReference Include="..\PoweredSoft.CQRS.DynamicQuery.Abstractions\PoweredSoft.CQRS.DynamicQuery.Abstractions.csproj" />
     <ProjectReference Include="..\PoweredSoft.CQRS.DynamicQuery.AspNetCore\PoweredSoft.CQRS.DynamicQuery.AspNetCore.csproj" />
     <ProjectReference Include="..\PoweredSoft.CQRS.DynamicQuery\PoweredSoft.CQRS.DynamicQuery.csproj" />
+    <ProjectReference Include="..\PoweredSoft.CQRS.GraphQL.HotChocolate\PoweredSoft.CQRS.GraphQL.HotChocolate.csproj" />
     <ProjectReference Include="..\PoweredSoft.CQRS\PoweredSoft.CQRS.csproj" />
   </ItemGroup>
 

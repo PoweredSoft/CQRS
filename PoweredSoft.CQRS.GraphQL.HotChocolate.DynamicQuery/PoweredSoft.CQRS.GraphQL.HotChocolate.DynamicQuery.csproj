@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PoweredSoft.CQRS.Abstractions\PoweredSoft.CQRS.Abstractions.csproj" />
-    <ProjectReference Include="..\PoweredSoft.CQRS.GraphQL.Abstractions\PoweredSoft.CQRS.GraphQL.Abstractions.csproj" />
+    <ProjectReference Include="..\PoweredSoft.CQRS.GraphQL.DynamicQuery\PoweredSoft.CQRS.GraphQL.DynamicQuery.csproj" />
   </ItemGroup>
 
 </Project>

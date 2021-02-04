@@ -19,6 +19,7 @@
     <ProjectReference Include="..\PoweredSoft.CQRS.DynamicQuery.AspNetCore\PoweredSoft.CQRS.DynamicQuery.AspNetCore.csproj" />
     <ProjectReference Include="..\PoweredSoft.CQRS.DynamicQuery\PoweredSoft.CQRS.DynamicQuery.csproj" />
     <ProjectReference Include="..\PoweredSoft.CQRS.GraphQL.FluentValidation\PoweredSoft.CQRS.GraphQL.FluentValidation.csproj" />
+    <ProjectReference Include="..\PoweredSoft.CQRS.GraphQL.HotChocolate.DynamicQuery\PoweredSoft.CQRS.GraphQL.HotChocolate.DynamicQuery.csproj" />
     <ProjectReference Include="..\PoweredSoft.CQRS.GraphQL.HotChocolate\PoweredSoft.CQRS.GraphQL.HotChocolate.csproj" />
     <ProjectReference Include="..\PoweredSoft.CQRS\PoweredSoft.CQRS.csproj" />
   </ItemGroup>

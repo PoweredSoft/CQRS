@@ -4,6 +4,8 @@ using HotChocolate.Types;
 using PoweredSoft.CQRS.Abstractions;
 using PoweredSoft.CQRS.Abstractions.Discovery;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace PoweredSoft.CQRS.GraphQL.HotChocolate
@@ -28,11 +30,25 @@ namespace PoweredSoft.CQRS.GraphQL.HotChocolate
                 var queryField = desc.Field(q.LowerCamelCaseName);
                 var typeToGet = typeof(IQueryHandler<,>).MakeGenericType(q.QueryType, q.QueryResultType);
 
-                queryField.Type(q.QueryResultType);
+                queryField.Use((sp, d) => new QueryAuthorizationMiddleware(q.QueryType, d));
 
-                // TODO.
-                // always required.
-                //queryField.Use((sp, d) => new QueryAuthorizationMiddleware(q.QueryType, d));
+                // if its a IQueryable.
+                if (q.QueryResultType.Namespace == "System.Linq" && q.QueryResultType.Name.Contains("IQueryable"))
+                {
+                    //waiting on answer to be determined.
+                    /*var genericArgument = q.QueryResultType.GetGenericArguments().First();
+                    var type = new ListType(new NonNullType(new NamedTypeNode));
+                    queryField.Type(type);
+                    queryField.UsePaging();
+                    */
+
+                    queryField.Type(q.QueryResultType);
+                }
+                else
+                {
+                    queryField.Type(q.QueryResultType);
+
+                }
 
                 if (q.QueryType.GetProperties().Length == 0)
                 {

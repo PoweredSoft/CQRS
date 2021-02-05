@@ -22,6 +22,8 @@ using PoweredSoft.Data.Core;
 using PoweredSoft.DynamicQuery;
 using System.Linq;
 using PoweredSoft.CQRS.GraphQL.HotChocolate.DynamicQuery;
+using PoweredSoft.CQRS.Abstractions.Security;
+using Demo.Security;
 
 namespace Demo
 {
@@ -41,6 +43,9 @@ namespace Demo
             AddDynamicQueries(services);
             AddCommands(services);
 
+            services.AddHttpContextAccessor();
+            services.AddTransient<IQueryAuthorizationService, CommandAndQueryAuthorizationService>();
+            services.AddTransient<ICommandAuthorizationService, CommandAndQueryAuthorizationService>();
             services.AddTransient<IAsyncQueryableHandlerService, InMemoryQueryableHandler>();
             services.AddPoweredSoftDataServices();
             services.AddPoweredSoftDynamicQuery();

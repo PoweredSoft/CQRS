@@ -61,6 +61,9 @@ namespace PoweredSoft.CQRS.GraphQL.HotChocolate.DynamicQuery
 
                     f.Type(resultType);
 
+                    // security middleware
+                    f.Use((sp, d) => new QueryAuthorizationMiddleware(q.QueryType, d));
+
                     // middleware to validate.
                     f.Use<QueryValidationMiddleware>();
 

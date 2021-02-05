@@ -10,7 +10,10 @@ namespace Demo.DynamicQueries
         public Task<IQueryable<Contact>> AlterQueryableAsync(IQueryable<Contact> query, IDynamicQueryParams<SearchContactParams> dynamicQuery, CancellationToken cancellationToken = default)
         {
             var safe = dynamicQuery.GetParams()?.SearchDisplayName;
-            return Task.FromResult(query.Where(t => t.DisplayName.Contains(safe)));
+            if (!string.IsNullOrEmpty(safe))
+                return Task.FromResult(query.Where(t => t.DisplayName.Contains(safe)));
+
+            return Task.FromResult(query);
         }
     }
 }

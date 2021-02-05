@@ -11,7 +11,7 @@ namespace PoweredSoft.CQRS.AspNetCore.Mvc
     public class CommandController<TCommand> : Controller
         where TCommand : class
     {
-        [HttpPost]
+        [HttpPost, CommandControllerAuthorization]
         public async Task<IActionResult> Handle([FromServices] ICommandHandler<TCommand> handler, 
             [FromBody] TCommand command)
         {
@@ -27,7 +27,7 @@ namespace PoweredSoft.CQRS.AspNetCore.Mvc
     public class CommandController<TCommand, TTCommandResult> : Controller
         where TCommand : class
     {
-        [HttpPost]
+        [HttpPost, CommandControllerAuthorization]
         public async Task<ActionResult<TTCommandResult>> Handle([FromServices] ICommandHandler<TCommand, TTCommandResult> handler,
             [FromBody] TCommand command)
         {

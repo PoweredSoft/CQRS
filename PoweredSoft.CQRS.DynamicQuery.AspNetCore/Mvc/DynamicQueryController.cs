@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PoweredSoft.CQRS.AspNetCore.Mvc;
 using PoweredSoft.CQRS.DynamicQuery.Abstractions;
 using PoweredSoft.DynamicQuery.Core;
 using System;
@@ -13,7 +14,7 @@ namespace PoweredSoft.CQRS.DynamicQuery.AspNetCore.Mvc
         where TSource : class
         where TDestination : class
     {
-        [HttpPost]
+        [HttpPost, QueryControllerAuthorization]
         public async Task<IQueryExecutionResult<TDestination>> HandleAsync(
                 [FromBody] DynamicQuery<TSource, TDestination> query, 
                 [FromServices]PoweredSoft.CQRS.Abstractions.IQueryHandler<IDynamicQuery<TSource, TDestination>, IQueryExecutionResult<TDestination>> queryHandler
@@ -30,7 +31,7 @@ namespace PoweredSoft.CQRS.DynamicQuery.AspNetCore.Mvc
         where TDestination : class
         where TParams : class
     {
-        [HttpPost]
+        [HttpPost, QueryControllerAuthorization]
         public async Task<IQueryExecutionResult<TDestination>> HandleAsync(
                 [FromBody] DynamicQuery<TSource, TDestination, TParams> query,
                 [FromServices] PoweredSoft.CQRS.Abstractions.IQueryHandler<IDynamicQuery<TSource, TDestination, TParams>, IQueryExecutionResult<TDestination>> queryHandler

@@ -11,7 +11,7 @@ namespace PoweredSoft.CQRS.AspNetCore.Mvc
     public class QueryController<TQuery, TQueryResult> : Controller
         where TQuery : class
     {
-        [HttpPost]
+        [HttpPost, QueryControllerAuthorization]
         public async Task<ActionResult<TQueryResult>> Handle([FromServices] IQueryHandler<TQuery, TQueryResult> handler, 
             [FromBody] TQuery query)
         {

@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\PoweredSoft.CQRS.Abstractions\PoweredSoft.CQRS.Abstractions.csproj" />
     <ProjectReference Include="..\PoweredSoft.CQRS.AspNetCore.Abstractions\PoweredSoft.CQRS.AspNetCore.Abstractions.csproj" />
+    <ProjectReference Include="..\PoweredSoft.CQRS.AspNetCore\PoweredSoft.CQRS.AspNetCore.csproj" />
     <ProjectReference Include="..\PoweredSoft.CQRS.DynamicQuery.Abstractions\PoweredSoft.CQRS.DynamicQuery.Abstractions.csproj" />
     <ProjectReference Include="..\PoweredSoft.CQRS.DynamicQuery\PoweredSoft.CQRS.DynamicQuery.csproj" />
   </ItemGroup>

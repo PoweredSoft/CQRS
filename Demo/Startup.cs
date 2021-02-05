@@ -62,6 +62,7 @@ namespace Demo
 
             services
                 .AddGraphQLServer()
+                .AddProjections()
                 .AddQueryType(d => d.Name("Query"))
                 .AddPoweredSoftQueries()
                 .AddPoweredSoftDynamicQueries()

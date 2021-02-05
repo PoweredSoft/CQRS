@@ -36,12 +36,14 @@ namespace PoweredSoft.CQRS.GraphQL.HotChocolate
                 if (q.QueryResultType.Namespace == "System.Linq" && q.QueryResultType.Name.Contains("IQueryable"))
                 {
                     //waiting on answer to be determined.
-                    /*var genericArgument = q.QueryResultType.GetGenericArguments().First();
-                    var type = new ListType(new NonNullType(new NamedTypeNode));
-                    queryField.Type(type);
-                    queryField.UsePaging();
-                    */
-
+                    //this does not work
+                    //var genericArgument = q.QueryResultType.GetGenericArguments().First();
+                    //var objectTypeOfAargument = typeof(ObjectType<>).MakeGenericType(genericArgument);
+                    //var listType = typeof(ListType<>).MakeGenericType(objectTypeOfAargument);
+                    //queryField.Type(objectTypeOfAargument);
+                    //queryField.UseSingleOrDefault();
+                    //queryField.UseProjection();
+                    ////queryField.UsePaging(listType);
                     queryField.Type(q.QueryResultType);
                 }
                 else

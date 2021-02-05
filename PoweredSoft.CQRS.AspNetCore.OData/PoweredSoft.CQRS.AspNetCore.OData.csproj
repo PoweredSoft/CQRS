@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+    
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OData" Version="7.5.5" />
+  </ItemGroup>
+    
+  <ItemGroup>
+    <ProjectReference Include="..\PoweredSoft.CQRS.Abstractions\PoweredSoft.CQRS.Abstractions.csproj" />
+    <ProjectReference Include="..\PoweredSoft.CQRS.AspNetCore.OData.Abstractions\PoweredSoft.CQRS.AspNetCore.OData.Abstractions.csproj" />
+    <ProjectReference Include="..\PoweredSoft.CQRS.AspNetCore\PoweredSoft.CQRS.AspNetCore.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -24,6 +24,7 @@ using System.Linq;
 using PoweredSoft.CQRS.GraphQL.HotChocolate.DynamicQuery;
 using PoweredSoft.CQRS.Abstractions.Security;
 using Demo.Security;
+using Microsoft.AspNet.OData.Extensions;
 
 namespace Demo
 {
@@ -50,14 +51,15 @@ namespace Demo
             services.AddPoweredSoftDataServices();
             services.AddPoweredSoftDynamicQuery();
 
-            services
-                .AddPoweredSoftCQRS();
+            services.AddPoweredSoftCQRS();
+            services.AddOData();
 
             services
                 .AddControllers()
                 .AddPoweredSoftQueries()
                 .AddPoweredSoftCommands()
                 .AddPoweredSoftDynamicQueries()
+                .AddPoweredSoftODataQueries()
                 .AddFluentValidation();
 
             services
@@ -128,6 +130,10 @@ namespace Demo
             {
                 endpoints.MapControllers();
                 endpoints.MapGraphQL();
+
+                endpoints.Select().Filter().OrderBy().Count().MaxTop(10);
+               
+                endpoints.MapODataRoute("odata", "odata", endpoints.GetPoweredSoftODataEdmModel());
             });
         }
     }

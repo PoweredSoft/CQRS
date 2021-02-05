@@ -13,9 +13,9 @@ namespace PoweredSoft.CQRS.AspNetCore.OData
         where TQuery : class
     {
         [EnableQuery, HttpGet, QueryControllerAuthorization]
-        public async Task<TQueryResult> Get([FromServices]IQueryHandler<TQuery, TQueryResult> queryHandler)
+        public async Task<TQueryResult> Get([FromServices]IQueryHandler<TQuery, TQueryResult> queryHandler, [FromQuery]TQuery query)
         {
-            var result = await queryHandler.HandleAsync(null, HttpContext.RequestAborted);
+            var result = await queryHandler.HandleAsync(query, HttpContext.RequestAborted);
             return result;
         }
     }

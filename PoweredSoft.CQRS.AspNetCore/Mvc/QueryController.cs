@@ -21,5 +21,16 @@ namespace PoweredSoft.CQRS.AspNetCore.Mvc
 
             return Ok(await handler.HandleAsync(query, this.Request.HttpContext.RequestAborted));
         }
+
+        [HttpGet, QueryControllerAuthorization]
+        public async Task<ActionResult<TQueryResult>> HandleGet([FromServices] IQueryHandler<TQuery, TQueryResult> handler,
+            [FromQuery] TQuery query)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+
+            return Ok(await handler.HandleAsync(query, this.Request.HttpContext.RequestAborted));
+        }
     }
 }

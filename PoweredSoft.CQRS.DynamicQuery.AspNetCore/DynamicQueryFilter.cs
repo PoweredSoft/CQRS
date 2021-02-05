@@ -1,4 +1,5 @@
-﻿using PoweredSoft.DynamicQuery;
+﻿using Microsoft.AspNetCore.Mvc;
+using PoweredSoft.DynamicQuery;
 using PoweredSoft.DynamicQuery.Core;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,19 @@ namespace PoweredSoft.CQRS.DynamicQuery.AspNetCore
         public bool? Not { get; set; }
         public string Path { get; set; }
         public object Value { get; set; }
+
+        [FromQuery(Name ="value")]
+        public string QueryValue
+        {
+            get
+            {
+                return null;
+            }
+            set
+            {
+                Value = value;
+            }
+        }
 
         public IFilter ToFilter()
         {

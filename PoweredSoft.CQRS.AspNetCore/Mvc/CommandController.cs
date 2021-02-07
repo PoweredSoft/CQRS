@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace PoweredSoft.CQRS.AspNetCore.Mvc
 {
+    [Produces("application/json")]
     [ApiController, Route("api/command/[controller]")]
     public class CommandController<TCommand> : Controller
         where TCommand : class
@@ -23,6 +24,7 @@ namespace PoweredSoft.CQRS.AspNetCore.Mvc
         }
     }
 
+    [Produces("application/json")]
     [ApiController, Route("api/command/[controller]")]
     public class CommandController<TCommand, TTCommandResult> : Controller
         where TCommand : class

@@ -74,6 +74,7 @@ namespace Demo
             services.AddPoweredSoftGraphQLFluentValidation();
 
             services.AddSwaggerGen();
+            services.AddCors();
         }
 
         private void AddDynamicQueries(IServiceCollection services)
@@ -112,6 +113,8 @@ namespace Demo
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors(o => o.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
             app.UseRouting();
 

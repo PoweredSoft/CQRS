@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace PoweredSoft.CQRS.AspNetCore.Mvc
 {
+    [Produces("application/json")]
     [ApiController, Route("api/query/[controller]")]
     public class QueryController<TQuery, TQueryResult> : Controller
         where TQuery : class

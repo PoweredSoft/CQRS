@@ -33,14 +33,14 @@ namespace PoweredSoft.CQRS.DynamicQuery.AspNetCore
         public int? Page { get; set; }
         public int? PageSize { get; set; }
         public List<Sort> Sorts { get; set; }
-        public List<Aggregate> Aggregates { get; set; }
+        public List<DynamicQueryAggregate> Aggregates { get; set; }
         public List<Group> Groups { get; set; }
         public List<DynamicQueryFilter> Filters { get; set; }
 
 
         public List<IAggregate> GetAggregates()
         {
-            return Aggregates?.AsEnumerable<IAggregate>()?.ToList();
+            return Aggregates?.Select(t => t.ToAggregate())?.ToList();//.AsEnumerable<IAggregate>()?.ToList();
         }
 
         public List<IFilter> GetFilters()

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PoweredSoft.DynamicQuery;
 using PoweredSoft.DynamicQuery.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
@@ -11,7 +12,7 @@ namespace PoweredSoft.CQRS.DynamicQuery.AspNetCore
     {
         public List<DynamicQueryFilter> Filters { get; set; }
         public bool? And { get; set; }
-        public FilterType Type { get; set; }
+        public string Type { get; set; }
         public bool? Not { get; set; }
         public string Path { get; set; }
         public object Value { get; set; }
@@ -31,7 +32,8 @@ namespace PoweredSoft.CQRS.DynamicQuery.AspNetCore
 
         public IFilter ToFilter()
         {
-            if (Type == FilterType.Composite)
+            var type = Enum.Parse<FilterType>(Type);
+            if (type == FilterType.Composite)
             {
                 var compositeFilter = new CompositeFilter
                 {
@@ -62,7 +64,7 @@ namespace PoweredSoft.CQRS.DynamicQuery.AspNetCore
             var simpleFilter = new SimpleFilter
             {
                 And = And,
-                Type = Type,
+                Type = type,
                 Not = Not,
                 Path = Path,
                 Value = value

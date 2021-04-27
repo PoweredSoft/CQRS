@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Pluralize.NET" Version="1.0.2" />
-    <PackageReference Include="PoweredSoft.DynamicQuery" Version="2.1.4" />
+    <PackageReference Include="PoweredSoft.DynamicQuery" Version="2.1.5" />
   </ItemGroup>
 
   <ItemGroup>

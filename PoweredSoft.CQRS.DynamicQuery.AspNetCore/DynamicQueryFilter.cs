@@ -30,6 +30,8 @@ namespace PoweredSoft.CQRS.DynamicQuery.AspNetCore
             }
         }
 
+        public bool? CaseInsensitive { get; set; }
+
         public IFilter ToFilter()
         {
             var type = Enum.Parse<FilterType>(Type);
@@ -67,7 +69,8 @@ namespace PoweredSoft.CQRS.DynamicQuery.AspNetCore
                 Type = type,
                 Not = Not,
                 Path = Path,
-                Value = value
+                Value = value,
+                CaseInsensitive = CaseInsensitive,
             };
             return simpleFilter;
         }

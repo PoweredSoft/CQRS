@@ -10,6 +10,7 @@ namespace PoweredSoft.CQRS.GraphQL.DynamicQuery
     {
         public bool? And { get; set; }
         public FilterType Type { get; set; }
+        public bool? CaseInsensitive { get; set; }
         public string Path { get; set; }
         public GraphQLVariantInput Value { get; set; }
         public bool? Not { get; set; }
@@ -38,6 +39,7 @@ namespace PoweredSoft.CQRS.GraphQL.DynamicQuery
                 return new SimpleFilter
                 {
                     And = And,
+                    CaseInsensitive = CaseInsensitive,
                     Type = Type,
                     Not = Not,
                     Path = Path,

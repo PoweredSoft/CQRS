@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="PoweredSoft.DynamicQuery.Core" Version="2.1.4" />
+    <PackageReference Include="PoweredSoft.DynamicQuery.Core" Version="2.1.5" />
   </ItemGroup>
 
 </Project>

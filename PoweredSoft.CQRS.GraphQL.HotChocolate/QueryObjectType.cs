@@ -25,7 +25,7 @@ namespace PoweredSoft.CQRS.GraphQL.HotChocolate
             foreach (var q in queryDiscovery.GetQueries())
             {
                 if (q.Category != "BasicQuery")
-                    return;
+                    continue;
 
                 var queryField = desc.Field(q.LowerCamelCaseName);
                 var typeToGet = typeof(IQueryHandler<,>).MakeGenericType(q.QueryType, q.QueryResultType);

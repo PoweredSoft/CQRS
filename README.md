@@ -70,7 +70,7 @@ We use fluent validation in all of our projects, but we don't want it to be enfo
 
 If you install. ```PoweredSoft.CQRS.FluentValidation``` you can use this way of registrating your commands.
 
-```chsarp
+```csharp
 public void ConfigureServices(IServiceCollection services) 
 {
     // without Package.

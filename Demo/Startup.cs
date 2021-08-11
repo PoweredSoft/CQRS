@@ -25,6 +25,7 @@ using PoweredSoft.CQRS.GraphQL.HotChocolate.DynamicQuery;
 using PoweredSoft.CQRS.Abstractions.Security;
 using Demo.Security;
 using Microsoft.AspNet.OData.Extensions;
+using PoweredSoft.CQRS.FluentValidation;
 
 namespace Demo
 {
@@ -95,8 +96,12 @@ namespace Demo
             services.AddCommand<CreatePersonCommand, CreatePersonCommandHandler>();
             services.AddTransient<IValidator<CreatePersonCommand>, CreatePersonCommandValidator>();
 
+            /* OLD WAY STILL VALID 
             services.AddCommand<EchoCommand, string, EchoCommandHandler>();
-            services.AddTransient<IValidator<EchoCommand>, EchoCommandValidator>();
+            services.AddTransient<IValidator<EchoCommand>, EchoCommandValidator>();*/
+
+            // new way :) with PoweredSoft.CQRS.FluentValidation package.
+            services.AddCommandWithValidator<EchoCommand, string, EchoCommandHandler, EchoCommandValidator>();
         }
 
         private void AddQueries(IServiceCollection services)

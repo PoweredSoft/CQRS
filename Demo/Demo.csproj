@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -20,6 +20,7 @@
     <ProjectReference Include="..\PoweredSoft.CQRS.DynamicQuery.Abstractions\PoweredSoft.CQRS.DynamicQuery.Abstractions.csproj" />
     <ProjectReference Include="..\PoweredSoft.CQRS.DynamicQuery.AspNetCore\PoweredSoft.CQRS.DynamicQuery.AspNetCore.csproj" />
     <ProjectReference Include="..\PoweredSoft.CQRS.DynamicQuery\PoweredSoft.CQRS.DynamicQuery.csproj" />
+    <ProjectReference Include="..\PoweredSoft.CQRS.FluentValidation\PoweredSoft.CQRS.FluentValidation.csproj" />
     <ProjectReference Include="..\PoweredSoft.CQRS.GraphQL.FluentValidation\PoweredSoft.CQRS.GraphQL.FluentValidation.csproj" />
     <ProjectReference Include="..\PoweredSoft.CQRS.GraphQL.HotChocolate.DynamicQuery\PoweredSoft.CQRS.GraphQL.HotChocolate.DynamicQuery.csproj" />
     <ProjectReference Include="..\PoweredSoft.CQRS.GraphQL.HotChocolate\PoweredSoft.CQRS.GraphQL.HotChocolate.csproj" />

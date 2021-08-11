@@ -64,4 +64,17 @@ private void AddQueries(IServiceCollection services)
     services.AddQuery<PersonQuery, IQueryable<Person>, PersonQueryHandler>();
 }
 ```
+# Fluent Validation
 
+We use fluent validation in all of our projects, but we don't want it to be enforced.
+
+If you install. ```PoweredSoft.CQRS.FluentValidation``` you can use this way of registrating your commands.
+
+```chsarp
+// without Package.
+services.AddCommand<EchoCommand, string, EchoCommandHandler>();
+services.AddTransient<IValidator<EchoCommand>, EchoCommandValidator>();*/
+
+// with PoweredSoft.CQRS.FluentValidation package.
+services.AddCommandWithValidator<EchoCommand, string, EchoCommandHandler, EchoCommandValidator>();
+```

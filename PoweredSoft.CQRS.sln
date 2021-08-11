@@ -7,11 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PoweredSoft.CQRS.Abstractio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PoweredSoft.CQRS", "PoweredSoft.CQRS\PoweredSoft.CQRS.csproj", "{7069B98F-8736-4114-8AF5-1ACE094E6238}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoweredSoft.CQRS.AspNetCore", "PoweredSoft.CQRS.AspNetCore\PoweredSoft.CQRS.AspNetCore.csproj", "{A1D577E5-61BD-4E25-B2C8-1005C1D7665B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PoweredSoft.CQRS.AspNetCore", "PoweredSoft.CQRS.AspNetCore\PoweredSoft.CQRS.AspNetCore.csproj", "{A1D577E5-61BD-4E25-B2C8-1005C1D7665B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoweredSoft.CQRS.AspNetCore.Abstractions", "PoweredSoft.CQRS.AspNetCore.Abstractions\PoweredSoft.CQRS.AspNetCore.Abstractions.csproj", "{4C466827-31D3-4081-A751-C2FC7C381D7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PoweredSoft.CQRS.AspNetCore.Abstractions", "PoweredSoft.CQRS.AspNetCore.Abstractions\PoweredSoft.CQRS.AspNetCore.Abstractions.csproj", "{4C466827-31D3-4081-A751-C2FC7C381D7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "Demo\Demo.csproj", "{F15B1E11-8D4C-489E-AFF7-AA144105FE46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo", "Demo\Demo.csproj", "{F15B1E11-8D4C-489E-AFF7-AA144105FE46}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{617BA357-1A1F-40C5-B19A-A65A960E6142}"
 	ProjectSection(SolutionItems) = preProject
@@ -19,25 +19,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoweredSoft.CQRS.DynamicQuery", "PoweredSoft.CQRS.DynamicQuery\PoweredSoft.CQRS.DynamicQuery.csproj", "{A38CE930-191F-417C-B5BE-8CC62DB47513}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PoweredSoft.CQRS.DynamicQuery", "PoweredSoft.CQRS.DynamicQuery\PoweredSoft.CQRS.DynamicQuery.csproj", "{A38CE930-191F-417C-B5BE-8CC62DB47513}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoweredSoft.CQRS.DynamicQuery.Abstractions", "PoweredSoft.CQRS.DynamicQuery.Abstractions\PoweredSoft.CQRS.DynamicQuery.Abstractions.csproj", "{60B5E255-77B8-48E0-AE8F-04E8332970F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PoweredSoft.CQRS.DynamicQuery.Abstractions", "PoweredSoft.CQRS.DynamicQuery.Abstractions\PoweredSoft.CQRS.DynamicQuery.Abstractions.csproj", "{60B5E255-77B8-48E0-AE8F-04E8332970F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoweredSoft.CQRS.DynamicQuery.AspNetCore", "PoweredSoft.CQRS.DynamicQuery.AspNetCore\PoweredSoft.CQRS.DynamicQuery.AspNetCore.csproj", "{0829B99A-0A20-4CAC-A91E-FB67E18444DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PoweredSoft.CQRS.DynamicQuery.AspNetCore", "PoweredSoft.CQRS.DynamicQuery.AspNetCore\PoweredSoft.CQRS.DynamicQuery.AspNetCore.csproj", "{0829B99A-0A20-4CAC-A91E-FB67E18444DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoweredSoft.CQRS.GraphQL.HotChocolate", "PoweredSoft.CQRS.GraphQL.HotChocolate\PoweredSoft.CQRS.GraphQL.HotChocolate.csproj", "{BF8E3B0D-8651-4541-892F-F607C5E80F9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PoweredSoft.CQRS.GraphQL.HotChocolate", "PoweredSoft.CQRS.GraphQL.HotChocolate\PoweredSoft.CQRS.GraphQL.HotChocolate.csproj", "{BF8E3B0D-8651-4541-892F-F607C5E80F9B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoweredSoft.CQRS.GraphQL.Abstractions", "PoweredSoft.CQRS.GraphQL.Abstractions\PoweredSoft.CQRS.GraphQL.Abstractions.csproj", "{C18DD3EB-56A8-4576-BB31-04AE724E6E25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PoweredSoft.CQRS.GraphQL.Abstractions", "PoweredSoft.CQRS.GraphQL.Abstractions\PoweredSoft.CQRS.GraphQL.Abstractions.csproj", "{C18DD3EB-56A8-4576-BB31-04AE724E6E25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoweredSoft.CQRS.GraphQL.FluentValidation", "PoweredSoft.CQRS.GraphQL.FluentValidation\PoweredSoft.CQRS.GraphQL.FluentValidation.csproj", "{BB134663-BAB0-45C4-A6E0-34F296FCA7AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PoweredSoft.CQRS.GraphQL.FluentValidation", "PoweredSoft.CQRS.GraphQL.FluentValidation\PoweredSoft.CQRS.GraphQL.FluentValidation.csproj", "{BB134663-BAB0-45C4-A6E0-34F296FCA7AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoweredSoft.CQRS.GraphQL.HotChocolate.DynamicQuery", "PoweredSoft.CQRS.GraphQL.HotChocolate.DynamicQuery\PoweredSoft.CQRS.GraphQL.HotChocolate.DynamicQuery.csproj", "{8921D74D-DA6E-4DAF-BE85-7BE5229FE95C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PoweredSoft.CQRS.GraphQL.HotChocolate.DynamicQuery", "PoweredSoft.CQRS.GraphQL.HotChocolate.DynamicQuery\PoweredSoft.CQRS.GraphQL.HotChocolate.DynamicQuery.csproj", "{8921D74D-DA6E-4DAF-BE85-7BE5229FE95C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoweredSoft.CQRS.GraphQL.DynamicQuery", "PoweredSoft.CQRS.GraphQL.DynamicQuery\PoweredSoft.CQRS.GraphQL.DynamicQuery.csproj", "{34B27880-A5D5-47EA-A5FA-86E04E0F7A21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PoweredSoft.CQRS.GraphQL.DynamicQuery", "PoweredSoft.CQRS.GraphQL.DynamicQuery\PoweredSoft.CQRS.GraphQL.DynamicQuery.csproj", "{34B27880-A5D5-47EA-A5FA-86E04E0F7A21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoweredSoft.CQRS.AspNetCore.OData", "PoweredSoft.CQRS.AspNetCore.OData\PoweredSoft.CQRS.AspNetCore.OData.csproj", "{04459C2D-B02F-4FF0-8D66-73042F27C7CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PoweredSoft.CQRS.AspNetCore.OData", "PoweredSoft.CQRS.AspNetCore.OData\PoweredSoft.CQRS.AspNetCore.OData.csproj", "{04459C2D-B02F-4FF0-8D66-73042F27C7CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoweredSoft.CQRS.AspNetCore.OData.Abstractions", "PoweredSoft.CQRS.AspNetCore.OData.Abstractions\PoweredSoft.CQRS.AspNetCore.OData.Abstractions.csproj", "{9B65B727-C088-4562-A607-8BD5B5EFF289}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PoweredSoft.CQRS.AspNetCore.OData.Abstractions", "PoweredSoft.CQRS.AspNetCore.OData.Abstractions\PoweredSoft.CQRS.AspNetCore.OData.Abstractions.csproj", "{9B65B727-C088-4562-A607-8BD5B5EFF289}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoweredSoft.CQRS.FluentValidation", "PoweredSoft.CQRS.FluentValidation\PoweredSoft.CQRS.FluentValidation.csproj", "{70BD37C4-7497-474D-9A40-A701203971D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -105,6 +107,10 @@ Global
 		{9B65B727-C088-4562-A607-8BD5B5EFF289}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B65B727-C088-4562-A607-8BD5B5EFF289}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B65B727-C088-4562-A607-8BD5B5EFF289}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70BD37C4-7497-474D-9A40-A701203971D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70BD37C4-7497-474D-9A40-A701203971D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70BD37C4-7497-474D-9A40-A701203971D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70BD37C4-7497-474D-9A40-A701203971D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

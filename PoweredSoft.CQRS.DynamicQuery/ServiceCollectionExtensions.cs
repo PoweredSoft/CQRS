@@ -38,6 +38,25 @@ namespace PoweredSoft.CQRS.DynamicQuery
             return services;
         }
 
+        public static IServiceCollection AddDynamicQueryWithProvider<TSource, TQueryableProvider>(this IServiceCollection services, string name = null)
+            where TQueryableProvider : class, IQueryableProvider<TSource>
+            where TSource : class
+        {
+            services.AddTransient<IQueryableProvider<TSource>, TQueryableProvider>()
+                .AddDynamicQuery<TSource>(name: name);
+            return services;
+        }
+
+        public static IServiceCollection AddDynamicQueryWithParamsAndProvider<TSource, TParams, TQueryableProvider>(this IServiceCollection services, string name = null)
+            where TQueryableProvider : class, IQueryableProvider<TSource>
+            where TParams : class
+            where TSource : class
+        {
+            services.AddTransient<IQueryableProvider<TSource>, TQueryableProvider>()
+                .AddDynamicQueryWithParams<TSource, TParams>(name: name);
+            return services;
+        }
+
         public static IServiceCollection AddDynamicQueryWithParams<TSourceAndDestination, TParams>(this IServiceCollection services, string name = null)
             where TSourceAndDestination : class
             where TParams : class

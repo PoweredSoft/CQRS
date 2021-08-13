@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="PoweredSoft.DynamicQuery" Version="2.1.5" />
+    <PackageReference Include="PoweredSoft.DynamicQuery" Version="3.0.0" />
   </ItemGroup>
 
   <ItemGroup>

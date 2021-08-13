@@ -35,11 +35,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PoweredSoft.CQRS.GraphQL.Ho
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PoweredSoft.CQRS.GraphQL.DynamicQuery", "PoweredSoft.CQRS.GraphQL.DynamicQuery\PoweredSoft.CQRS.GraphQL.DynamicQuery.csproj", "{34B27880-A5D5-47EA-A5FA-86E04E0F7A21}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PoweredSoft.CQRS.AspNetCore.OData", "PoweredSoft.CQRS.AspNetCore.OData\PoweredSoft.CQRS.AspNetCore.OData.csproj", "{04459C2D-B02F-4FF0-8D66-73042F27C7CC}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PoweredSoft.CQRS.AspNetCore.OData.Abstractions", "PoweredSoft.CQRS.AspNetCore.OData.Abstractions\PoweredSoft.CQRS.AspNetCore.OData.Abstractions.csproj", "{9B65B727-C088-4562-A607-8BD5B5EFF289}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoweredSoft.CQRS.FluentValidation", "PoweredSoft.CQRS.FluentValidation\PoweredSoft.CQRS.FluentValidation.csproj", "{70BD37C4-7497-474D-9A40-A701203971D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PoweredSoft.CQRS.FluentValidation", "PoweredSoft.CQRS.FluentValidation\PoweredSoft.CQRS.FluentValidation.csproj", "{70BD37C4-7497-474D-9A40-A701203971D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,14 +95,6 @@ Global
 		{34B27880-A5D5-47EA-A5FA-86E04E0F7A21}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34B27880-A5D5-47EA-A5FA-86E04E0F7A21}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34B27880-A5D5-47EA-A5FA-86E04E0F7A21}.Release|Any CPU.Build.0 = Release|Any CPU
-		{04459C2D-B02F-4FF0-8D66-73042F27C7CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{04459C2D-B02F-4FF0-8D66-73042F27C7CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{04459C2D-B02F-4FF0-8D66-73042F27C7CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{04459C2D-B02F-4FF0-8D66-73042F27C7CC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9B65B727-C088-4562-A607-8BD5B5EFF289}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9B65B727-C088-4562-A607-8BD5B5EFF289}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9B65B727-C088-4562-A607-8BD5B5EFF289}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9B65B727-C088-4562-A607-8BD5B5EFF289}.Release|Any CPU.Build.0 = Release|Any CPU
 		{70BD37C4-7497-474D-9A40-A701203971D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{70BD37C4-7497-474D-9A40-A701203971D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70BD37C4-7497-474D-9A40-A701203971D8}.Release|Any CPU.ActiveCfg = Release|Any CPU

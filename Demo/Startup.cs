@@ -26,6 +26,7 @@ using PoweredSoft.CQRS.Abstractions.Security;
 using Demo.Security;
 using PoweredSoft.CQRS.FluentValidation;
 using Microsoft.AspNetCore.OData;
+using System.Collections.Generic;
 
 namespace Demo
 {
@@ -105,6 +106,8 @@ namespace Demo
         private void AddQueries(IServiceCollection services)
         {
             services.AddQuery<PersonQuery, IQueryable<Person>, PersonQueryHandler>();
+            services.AddQuery<OnePersonQuery, Person, OnePersonQueryHandler>();
+            services.AddQuery<ListPersonQuery, List<Person>, ListPersonQueryHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

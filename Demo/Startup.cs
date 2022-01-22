@@ -25,7 +25,6 @@ using PoweredSoft.CQRS.GraphQL.HotChocolate.DynamicQuery;
 using PoweredSoft.CQRS.Abstractions.Security;
 using Demo.Security;
 using PoweredSoft.CQRS.FluentValidation;
-using Microsoft.AspNetCore.OData;
 using System.Collections.Generic;
 
 namespace Demo
@@ -62,7 +61,7 @@ namespace Demo
                 .AddPoweredSoftDynamicQueries()
                 .AddFluentValidation();
 
-            services
+            var t = services
                 .AddGraphQLServer()
                 .AddProjections()
                 .AddQueryType(d => d.Name("Query"))
